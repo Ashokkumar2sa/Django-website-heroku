@@ -1,0 +1,1 @@
+web: gunicorn Djando_Blog.wsgi

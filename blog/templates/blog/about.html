@@ -1,5 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  .button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button1 {border-radius: 2px;}
+  .button2 {border-radius: 4px;}
+  .button3 {border-radius: 8px;}
+  .button4 {border-radius: 12px;}
+  .button5 {border-radius: 50%;}
+  </style>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
 
-{% extends "blog/base.html" %}
-    {% block content %}
-       <h1>About Page</h1>
-{% endblock content %}
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+    <div class="row">
+        <div class="column">
+            <a class="button" href="{% url 'blog-home' %}">Home</a>
+        </div>
+        
+            {% if user.is_authenticated %}
+            <div class="column"><a class="button" href="{% url 'post-create' %}">New Post</a></div>
+        
+        <div class="column"><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a></div>
+          
+          <div class="column"><a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></div>
+          
+        {% else %}
+        <div class="column"><a class="button" href="{% url 'login' %}">Login</a></div>
+          
+          <div class="column"><a class="button" href="{% url 'register' %}">Register</a></div>
+          
+        {% endif %}
+        
+      </div>
+  <h1>About Us Page</h1>
+  <p>Who am I .</p>
+</div>
+
+<h2 style="text-align:center">An WebApp Development Enthusiast</h2>
+<div class="center">
+    <div class="column">      
+      <div class="container">
+        <h2>Ashok Kumar Saini</h2>
+        <p class="title">A Student</p>
+        <p>A wep and app development enthusiast and a second year student at Indian Institute of Technology, Kanpur.Pursuing my bachellor's degree in COmputer Science and engineering</p>
+        <p>Contact me : askumar@iitk.ac.in</p>
+        <div><a class="button button4" href="#">Github Link</a></div>
+        
+        <h2>The Expert in anything was once a beginner</h2>
+      </div>
+    
+ </div>
+</div>
+
+</body>
+</html>
